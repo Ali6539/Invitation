@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<head>
+    <script src="https://kit.fontawesome.com/11acc5a5c1.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="pace.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-bez@1.0.11/src/jquery.bez.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+        *{
+            padding:0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body
+        {
+            padding:0;
+            margin: 0;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            width:100%;
+            height: auto;    /* this = 3590px */
+            font-family: 'cookie', cursive;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            background-color: #ff99b6;
+            overflow: hidden;
+        }
+        .banner{
+            width:100%;
+            height: 650px;
+            background-image: url("wed-img.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            border-radius: 0 0 500px 0;
+        }
+        .nav{
+            position: fixed;
+            width:94%;
+            height: auto;
+            background-color: rgba(255,200,200,.7);
+            border-radius: 30px;
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-right: 3px;
+        }
+        .nav b{
+            font-size: 30px;
+            margin-left: 20px;
+        }
+        .menu{
+            width:47%;
+            height: 60px;
+            border-radius: 30px;
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 0 10px 0 rgba(0,0,0,.5);
+            transition-duration: .5s;
+        }
+        .menu a{
+            text-decoration: none;
+            font-size: 20px;
+            color:#333;
+            font-weight: bolder;
+            transition-duration: .5s;
+        }
+        .menu a:hover{
+            border-bottom: 5px solid #f15;
+        }
+        .text{
+            width:100%;
+            position: relative;
+            top:260px;
+            left: 20px;
+            font-size: 34px;
+            text-align: left;
+        }
+        .text h1{
+            color:#f15;
+            text-shadow: 0 3px 10px rgba(0,0,0,.5);
+        }
+        .text .date{
+            color:#fff;
+            background-color: #f15;
+            padding: 5px;
+            border-radius: 40px 0 40px 0;
+            transition-duration: .5s;
+        }
+        .text .date:hover{
+            background-color: #fff;
+            color:#f15;
+        }
+        .section{
+            width:100%;
+            height: auto;
+            background-color: #efefef;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+        .us{
+            width:80%;
+            height: 70%;  /* i think 700px is good */
+            background-color: #fff;
+            border-radius: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 3px 10px 0 rgba(100,100,100,.3);
+        }
+        .us img{
+            width:200px;
+            height: 200px;
+            border-radius: 50%;
+            border-top: 10px solid #f15;
+            border-bottom: 10px solid #f15;
+            margin-bottom: 20px;
+        }
+        .section h2{
+            width:100%;
+            text-align: center;
+            color:#f15;
+            font-size: 60px;
+        }
+        .us1 {
+            display: flex;
+            flex-direction: column;
+        }
+        .us1 span{
+            color:#fff;
+            font-size: 40px;
+            padding: 8px;
+            background-color: #f15;
+            border-radius: 8px;
+        }
+        .venue{
+            width:80%;
+            height: auto;
+            background-color: #fff;
+            border-radius: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 30px;
+            box-shadow: 0 3px 10px 0 rgba(100,100,100,.3);
+        }
+        .venue .imggg{
+            width:100%;
+            height: 300px;
+            display: inline;
+            border:2px solid #f15;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .venue p{
+            font-size: 35px;
+            line-height: 30px;
+            color:#333;
+            text-align: center;
+        }
+
+        
+        .btn
+        {
+            background: rgb(0, 18, 99);
+            width: 260px;
+            height: 52px;
+            border-radius: 20px;
+            transition-duration: .6s;
+            color: #c70000;
+        }
+        .btn:hover
+        {
+            background-color: rgb(140, 91, 255);
+        }
+        .lnk
+        {
+            color: #d81414;
+            font-size: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        .place .svg
+        {
+            width: 45px;
+            height: 42px;
+            position: absolute;
+            margin-left: 11px;
+            margin-top: 1px;
+        }
+        .ShowOnMap
+        {
+            color: rgb(9, 255, 0);
+            font-size: 25px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+        }
+        
+        .party{
+            width:80%;
+            height: auto;
+            background-color: #fff;
+            border-radius: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-wrap: wrap;
+            padding: 30px;
+            box-shadow: 0 3px 10px 0 rgba(100,100,100,.3);
+        }
+        .party .img{
+            width:100%;
+            height: 300px;
+            display: inline;
+            border:2px solid #f15;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .party p{
+            font-size: 35px;
+            line-height: 30px;
+            color:#333;
+        }
+        .footer{
+            padding:10px 0;
+            width:100%;
+            color:#ddd;
+            font-size: 25px;
+            font-family: monospace;
+            background-color: rgb(41, 40, 40);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-wrap: wrap;
+            width:100%;
+            height: 73px;
+            display: flex;
+            justify-content: center;
+        }
+        .footer i{
+            color:skyblue;
+            font-size: 30px;
+            margin-left: 20px;
+        }
+        .frm
+        {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            justify-items: center;
+            padding: 0;
+            margin-bottom: 8px;
+            margin-top: 20px;
+            width: 96%;
+            flex-wrap: wrap;
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        .frame
+        {
+            width: 96%;
+            height: 400px;
+            padding: 0;
+            margin: 0;
+            border:4px solid #f15;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        
+        </style>
+        
+          <script>
+          window.console = window.console || function(t) {};
+        </script>
+          
+          <script>
+          if (document.location.search.match(/type=embed/gi)) {
+            window.parent.postMessage("resize", "*");
+          }
+        </script>
+</head>
+
+<body translate="no">
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no,minimum-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="ie-edge">
+    <link rel="icon" href="flower.svg">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+
+    <title>Invitation</title>
+
+    
+	</head>
+<body>
+    
+
+	<div class="container">
+		<div class="banner">
+			<div class="nav" id="nav">
+				<b>Hamed and Ehsan</b>
+				<div class="menu">
+					<a href="#">Home</a>
+					<a href="#us">Us</a>
+					<a href="#venue">Venue</a>
+					<a href="#party">Party</a>
+				</div>
+			</div>
+
+
+			<div class="text">
+                <br>
+				<h1>Hamed & Ehsan</h1>
+				<span class="date">On 25th March, 2021</span>
+			</div>
+
+
+		</div>
+		<div class="section">
+			<div class="us">
+				<h2><a name="us">Us</a></h2>
+				<div class="us1">
+					<img src="wed-man.jpg">
+					<span>Hamed is mine!</span>
+				</div>
+				<div class="us1">
+					<img src="wed-woman.jpg">
+					<span>Ehsan is mine!</span>
+				</div>
+			</div>
+			<div class="venue">
+				<h2><a name="venue">Venue</a></h2>
+				<img src="wed-venue.jpg" class="imggg">
+				<p>The best place.....The best place.....The best place.....
+                    The best place.....The best place.....The best place.....
+                    The best place.....The best place.....The best place.....
+                    The best place.....The best place.....The best place.....
+                </p>
+
+
+<!--####################################################-->
+<!--####################################################-->
+
+                        <br><br><br><br>
+
+                        <div class="place">
+                           <!-- <img src="map5.png" class="dod"> -->
+
+
+
+                            <div class="svg">
+
+
+                           
+                                    <?xml version="1.0" encoding="iso-8859-1"?>
+                                    <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+                                    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                        viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+                                    <path style="fill:#CFD8DC;" d="M480.001,192v266.667c0.076,10.496-3.05,20.766-8.96,29.44c-1.898,3.003-4.116,5.793-6.613,8.32
+                                        L252.801,284.8l-7.467-7.467l145.707-145.707l9.173,5.76l74.667,45.44C478.058,184.795,479.994,188.263,480.001,192z"/>
+                                    <path style="fill:#4CAF50;" d="M391.041,131.627L237.868,284.8L26.241,496.427c-2.498-2.527-4.715-5.317-6.613-8.32
+                                        c-5.91-8.674-9.036-18.944-8.96-29.44V117.333C10.668,87.878,34.546,64,64.001,64h213.333c1.939,0.066,3.837,0.577,5.547,1.493
+                                        l98.987,60.373L391.041,131.627z"/>
+                                    <path style="fill:#2196F3;" d="M464.428,496.427c-2.526,2.499-5.315,4.717-8.32,6.613c-8.674,5.911-18.944,9.037-29.44,8.96H64.001
+                                        c-10.496,0.077-20.766-3.049-29.44-8.96c-3.005-1.897-5.794-4.114-8.32-6.613L237.868,284.8l7.467-7.467l7.467,7.467
+                                        L464.428,496.427z"/>
+                                    <path style="fill:#FAFAFA;" d="M471.041,488.107c-3.775,6.05-8.883,11.158-14.933,14.933L237.868,284.8
+                                        c-4.082-4.165-4.014-10.851,0.151-14.933c4.106-4.024,10.676-4.024,14.782,0L471.041,488.107z"/>
+                                    <path style="fill:#FFC107;" d="M400.215,137.387L252.801,284.8L34.561,503.04c-6.05-3.775-11.158-8.883-14.933-14.933l362.24-362.24
+                                        L400.215,137.387z"/>
+                                    <g>
+                                        <path style="fill:#FAFAFA;" d="M106.668,192c-23.564,0-42.667-19.103-42.667-42.667s19.103-42.667,42.667-42.667
+                                            s42.667,19.103,42.667,42.667S130.232,192,106.668,192z M106.668,128c-11.782,0-21.333,9.551-21.333,21.333
+                                            s9.551,21.333,21.333,21.333s21.333-9.551,21.333-21.333S118.45,128,106.668,128z"/>
+                                        <path style="fill:#FAFAFA;" d="M149.335,128h-42.667c-5.891,0-10.667-4.776-10.667-10.667s4.776-10.667,10.667-10.667h42.667
+                                            c5.891,0,10.667,4.776,10.667,10.667S155.226,128,149.335,128z"/>
+                                        <path style="fill:#FAFAFA;" d="M106.668,277.333c-26.342,3.08-50.193-15.778-53.273-42.12c-0.021-0.182-0.042-0.364-0.061-0.546
+                                            c0-19.947,18.944-33.408,56.363-40.149c-1.999-4.107-3.035-8.616-3.029-13.184c0-5.891,4.776-10.667,10.667-10.667
+                                            c5.891,0,10.667,4.776,10.667,10.667c0,4.843,4.416,9.429,11.669,16.448c11.754,8.809,19.159,22.243,20.331,36.885
+                                            C160.001,272.171,134.401,277.333,106.668,277.333z M125.441,213.717c-37.376,4.715-50.773,14.144-50.773,20.949
+                                            c0,4.267,5.696,21.333,32,21.333c30.571,0,32-7.317,32-21.333C138.668,227.2,133.697,221.717,125.441,213.717z"/>
+                                    </g>
+                                    <path style="fill:#F44336;" d="M384.001,0C319.234,0.082,266.75,52.566,266.668,117.333c0.035,6.445,0.671,12.873,1.899,19.2
+                                        c2.571,16.539,8.739,32.312,18.069,46.208c4.949,8.533,10.667,17.408,16.704,26.88c34.686,49.795,58.598,106.281,70.208,165.845
+                                        c1.172,5.773,6.803,9.503,12.576,8.331c4.198-0.852,7.478-4.133,8.331-8.331c11.6-59.57,35.506-116.063,70.187-165.867
+                                        c6.08-9.451,11.755-18.261,16.277-26.176c9.505-14.025,15.811-29.967,18.475-46.699c1.246-6.39,1.896-12.882,1.941-19.392
+                                        C501.252,52.566,448.769,0.082,384.001,0z"/>
+                                    <circle style="fill:#C62828;" cx="384.001" cy="117.333" r="53.333"/>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    </svg>
+
+
+
+                            </div>
+
+
+
+                            <a href="https://goo.gl/maps/8vsw6gsztACpEzLQ6" target="_blank" class="lnk">
+                                <button type="button" class="btn">
+                                <div class="ShowOnMap">&nbsp;&nbsp;&nbsp;&nbsp; Show on map</div>
+                                </button>
+                            </a>
+                        </div>
+
+
+<!--####################################################-->
+<!--####################################################-->
+
+
+			</div>
+
+			<div class="party">
+				<h2><a name="party">Party</a></h2>
+				<img src="wed-party.jpg" class="img">
+				<p>A very good party.....A very good party.....A very good party.....
+                    A very good party.....A very good party.....A very good party.....
+                    A very good party.....A very good party.....<br>
+                    hope to see you there.....
+                </p>
+
+			</div>
+
+
+
+
+
+            <div class="frm">
+
+                <iframe src="InEdge.html" class="frame"></iframe>
+              
+              </div>
+
+
+            <div class="footer">
+                All Reserved to Team&reg; 2021
+                <a href="https://www.instagram.com/ali_tarek_94/" target="_blank">Visit MY&reg; Website</a>
+                <i class="fab fa-github"></i> <i class="fab fa-codepen"></i> <i class="fab fa-instgram"></i>
+             </div>
+
+             <br><br><br><br><br><br><br><br><br>
+            
+		</div>
+	</div>
+
+</body>
+</html>
